@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const { notes } = require('./db/db.json');
+const { createNewNote, validateNote } = require('./lib/notes')
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -21,6 +22,15 @@ app.get('/api/notes', (req, res) => {
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.post('/api/notes', (req, res) => {
+    if (!validateNote(req.body)) {
+        res.status(400).send('The animal is not properly formatted.');
+    } else {
+        const note = createNewNote(req.body, notes);
+        res.json(note);
+    }
 });
 
 //app listen

@@ -1,12 +1,16 @@
 {
-  "notes": [
-    {
-      "title": "Test Title",
-      "text": "Test text"
-    },
-    {
-      "title": "Submit HW",
-      "text": "HW is due on sunday night"
-    }
-  ]
+    "notes": [
+        {
+            "title": "Test Title",
+            "text": "Test text"
+        },
+        {
+            "title": "Submit HW",
+            "text": "HW is due on sunday night"
+        },
+        {
+            "title": "Test Post",
+            "text": "Am i here?"
+        }
+    ]
 }
