@@ -2,7 +2,7 @@ const router = require('express').Router();
 const {createNewNote, filterOutById } = require('../../lib/notes');
 const { notes } = require('../../db/db.json');
 const { nanoid } = require('nanoid');
-const fs = require('fs');
+
 
 
 router.get('/notes', (req, res) => {
@@ -21,7 +21,7 @@ router.post('/notes', (req, res) => {
 router.delete('/notes/:id', (req, res) => {
 
     const result = filterOutById(req.params.id, notes);
-    res.json(result)
+    console.log(result)
 });
 
 module.exports = router;
