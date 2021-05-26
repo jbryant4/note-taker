@@ -1,12 +1,14 @@
 const router = require('express').Router();
-const {createNewNote, filterOutById } = require('../../lib/notes');
+const {createNewNote, filterOutById, activeNoteFile } = require('../../lib/notes');
 const { notes } = require('../../db/db.json');
 const { nanoid } = require('nanoid');
-
+const fs = require('fs');
 
 
 router.get('/notes', (req, res) => {
-    res.json(notes);
+    const activeNotes = activeNoteFile();
+    console.log(activeNotes);
+    res.json(activeNotes);
 });
 
 
@@ -20,8 +22,12 @@ router.post('/notes', (req, res) => {
 
 router.delete('/notes/:id', (req, res) => {
 
-    const result = filterOutById(req.params.id, notes);
-    console.log(result)
+    const activeNotes = activeNoteFile(); 
+
+    // const result = filterOutById(req.params.id, activeNotes);
+    
+    // console.log(result)
+    res.send(activeNotes)
 });
 
 module.exports = router;
